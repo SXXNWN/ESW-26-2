@@ -1,0 +1,38 @@
+{
+  "notes": "예시 템플릿입니다. 실제 라즈베리파이 모델, LCD 컨트롤러, 배선 확인 전에는 hardware.json으로 복사해 사용하지 마십시오.",
+  "raspberry_pi_model": null,
+  "os_version": null,
+  "lcd": {
+    "controller": null,
+    "resolution": [240, 240],
+    "interface": null,
+    "rotation_degrees": null,
+    "spi_bus": null,
+    "spi_device": null,
+    "pin_cs": null,
+    "pin_dc": null,
+    "pin_reset": null,
+    "pin_backlight": null,
+    "y_offset": null,
+    "baudrate": null
+  },
+  "joystick": {
+    "type": null,
+    "note": "digital_gpio_4way OR analog_adc (ADC 모델 필요) OR other",
+    "pin_up": null,
+    "pin_down": null,
+    "pin_left": null,
+    "pin_right": null,
+    "pin_center": null,
+    "adc_model": null,
+    "adc_x_channel": null,
+    "adc_y_channel": null,
+    "deadzone": 0.2
+  },
+  "buttons": {
+    "pin_a": null,
+    "pin_b": null,
+    "active_low": true,
+    "pull_up": true
+  }
+}

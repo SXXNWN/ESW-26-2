@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.runtime/
+artifacts/
+*.md
+.DS_Store
+*.log
+config/hardware.json
