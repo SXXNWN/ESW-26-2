@@ -12,7 +12,6 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 WIDTH = HEIGHT = 240
 GROUND_Y = 184
-WORLD_WIDTH = 1120
 SPEED = 112.0
 GRAVITY = 650.0
 JUMP_SPEED = -250.0
@@ -26,7 +25,6 @@ class Game:
         self.vy = 0.0
         self.on_ground = True
         self.facing = 1
-        self.camera_x = 0.0
 
     def update(self, pressed: dict[str, bool], dt: float) -> None:
         if self.state == "title":
@@ -50,14 +48,13 @@ class Game:
             self.on_ground = False
 
         dt = min(max(dt, 0.0), 0.05)
-        self.x = min(max(self.x + direction * SPEED * dt, 0.0), WORLD_WIDTH - 32.0)
+        self.x = min(max(self.x + direction * SPEED * dt, 0.0), WIDTH - 32.0)
         self.vy += GRAVITY * dt
         self.y += self.vy * dt
         if self.y + 32 >= GROUND_Y:
             self.y = GROUND_Y - 32.0
             self.vy = 0.0
             self.on_ground = True
-        self.camera_x = min(max(self.x + 16 - WIDTH / 2, 0.0), WORLD_WIDTH - WIDTH)
 
 
 class Renderer:
@@ -81,13 +78,11 @@ class Renderer:
             return self.sprites[name].convert("RGB")
 
         frame = Image.new("RGB", (WIDTH, HEIGHT), (10, 18, 38))
-        first_x = int(game.camera_x // 16) * 16
-        for x in range(first_x, int(game.camera_x) + WIDTH + 16, 16):
-            screen_x = round(x - game.camera_x)
+        for x in range(0, WIDTH, 16):
             for y in range(GROUND_Y, HEIGHT, 16):
                 name = "tiles/roof_snow.png" if y == GROUND_Y else "tiles/roof_brick.png"
                 tile = self.sprites[name]
-                frame.paste(tile, (screen_x, y), tile)
+                frame.paste(tile, (x, y), tile)
         if not game.on_ground:
             name = "player/santa_jump_02.png" if game.vy < 0 else "player/santa_jump_03.png"
         else:
@@ -95,7 +90,7 @@ class Renderer:
         sprite = self.sprites[name]
         if game.facing < 0:
             sprite = ImageOps.mirror(sprite)
-        frame.paste(sprite, (round(game.x - game.camera_x), round(game.y)), sprite)
+        frame.paste(sprite, (round(game.x), round(game.y)), sprite)
         return frame
 
 
