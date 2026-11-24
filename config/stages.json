@@ -1,0 +1,42 @@
+{
+  "screen": {"width": 240, "height": 240},
+  "stages": [
+    {
+      "id": 1,
+      "world_width": 1536,
+      "ground_y": 184,
+      "player_spawn": {"x": 32, "y": 152},
+      "exit_x": 1472,
+      "chimneys": [80, 224, 368, 512, 656, 800, 944, 1088, 1232, 1376],
+      "enemies": [
+        {"type": "walker", "x": 260, "y": 152, "patrol_min_x": 238, "patrol_max_x": 288, "hp": 2},
+        {"type": "ranged", "x": 580, "y": 152, "patrol_min_x": 574, "patrol_max_x": 610, "hp": 2},
+        {"type": "walker", "x": 925, "y": 152, "patrol_min_x": 900, "patrol_max_x": 960, "hp": 2},
+        {"type": "ranged", "x": 1300, "y": 152, "patrol_min_x": 1290, "patrol_max_x": 1320, "hp": 2}
+      ],
+      "crates": [410, 1360],
+      "boss": null
+    },
+    {
+      "id": 2,
+      "world_width": 1800,
+      "ground_y": 184,
+      "player_spawn": {"x": 32, "y": 152},
+      "exit_x": null,
+      "chimneys": [80, 224, 368, 512, 656, 800, 944, 1088, 1232],
+      "final_chimney": 1682,
+      "enemies": [
+        {"type": "walker", "x": 272, "y": 152, "patrol_min_x": 250, "patrol_max_x": 302, "hp": 2},
+        {"type": "ranged", "x": 656, "y": 152, "patrol_min_x": 636, "patrol_max_x": 692, "hp": 2}
+      ],
+      "crates": [448],
+      "boss": {
+        "x": 1480,
+        "y": 120,
+        "hp": 10,
+        "warning_trigger_x": 1310,
+        "arena_right_x": 1650
+      }
+    }
+  ]
+}

@@ -14,7 +14,7 @@ test = ["pytest>=8.0"]
 rpi = ["spidev", "lgpio", "numpy"]
 
 [tool.setuptools.packages.find]
-include = ["santas_delivery*", "week1_delivery*"]
+include = ["santas_delivery*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
